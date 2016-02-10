@@ -29,3 +29,6 @@ def create():
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     return (engine,DBSession,session)
+
+#import puppytest
+#(engine,DBSession,session) = puppytest.create()
