@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
+from contextlib import contextmanager
 
 engine = create_engine('sqlite:///restaurantmenu.db')
 Base.metadata.bind = engine #this binds our class definitions with their corresponding tables in our database
@@ -56,3 +57,7 @@ def Delete():
     session.delete(spinach)
     session.commit()
     spinach = session.query(MenuItem).filter_by(name = "Spinach Ice Cream").one()
+def restaurant():
+    restauranties = session.query(Restaurant).all()
+    for restaurant in restauranties:
+        print restaurant.name
